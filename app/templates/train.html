@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Train Happiness Model</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0; /* Slightly lighter background color */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #FFD700; /* Yellow */
+        }
+
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #FF0000; /* Red */
+            border-radius: 5px;
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .form-container input[type="file"] {
+            border: 2px solid #FF0000; /* Red */
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #FF4500; /* Darker orange/red */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #CC3700; /* Slightly darker orange/red on hover */
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="range"] {
+            width: 80%;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        span {
+            display: inline-block;
+            width: 10%;
+            text-align: center;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function updateSliderValue() {
+            const slider = document.getElementById("test_size");
+            const valueLabel = document.getElementById("test_size_label");
+            valueLabel.textContent = (slider.value * 100).toFixed(0) + "%";
+        }
+    </script>
+</head>
+<body>
+    <h1>Latih Happiness Model</h1>
+    <div class="form-container">
+        <form action="/train" method="post" enctype="multipart/form-data">
+            <label for="csv_file">Pilih file CSV:</label>
+            <input type="file" name="csv_file">
+            
+            <label for="test_size">Test-Train Split Ratio:</label>
+            <input type="range" id="test_size" name="test_size" min="0.1" max="0.9" step="0.05" value="0.2" oninput="updateSliderValue()">
+            <span id="test_size_label">20%</span>
+            
+            <input type="submit" value="Train Model">
+        </form>
+        
+        {% if accuracy %}
+        <p>Akurasi Model: {{ accuracy }}%</p>
+        {% endif %}
+    </div>
+</body>
+</html>
