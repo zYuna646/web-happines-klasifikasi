@@ -64,26 +64,39 @@
     </style>
 </head>
 <body>
-    <h1>Klasifikasi Happiness</h1>
+    <h1>Klasifikasi Kelayakan Penurunan UKT</h1>
     <div class="form-container">
         <form action="/classify" method="post">
-            <label for="infoavail">Info Availability:</label>
-            <input type="number" name="infoavail" required>
+            <label for="tempat_tinggal">Tempat Tinggal:</label>
+            <select name="tempat_tinggal" required>
+                <option value="1">Rumah Pribadi</option>
+                <option value="0">Rumah Sewa</option>
+            </select>
 
-            <label for="housecost">House Cost:</label>
-            <input type="number" name="housecost" required>
+            <label for="pekerjaan_orang_tua">Pekerjaan Orang Tua:</label>
+            <select name="pekerjaan_orang_tua" required>
+                <option value="1">PNS</option>
+                <option value="2">Polri</option>
+                <option value="3">Petani</option>
+                <option value="4">Nelayan</option>
+                <option value="5">Buruh</option>
+                <option value="6">Wiraswasta</option>
+                <option value="7">Wirausaha</option>
+                <option value="8">IRT</option>
+                <option value="9">Tukang Parut Kelapa</option>
+                <option value="10">Guru</option>
+                <option value="11">Babysitter</option>
+                <option value="12">Sopir Hoter</option>
+            </select>
 
-            <label for="schoolquality">School Quality:</label>
-            <input type="number" name="schoolquality" required>
+            <label for="penghasilan_orang_tua">Penghasilan Orang Tua:<  /label>
+            <input type="number" name="penghasilan_orang_tua" required>
 
-            <label for="policetrust">Police Trust:</label>
-            <input type="number" name="policetrust" required>
+            <label for="tanggungan_orang_tua">Tanggungan Orang Tua:</label>
+            <input type="number" name="tanggungan_orang_tua" required>
 
-            <label for="streetquality">Street Quality:</label>
-            <input type="number" name="streetquality" required>
-
-            <label for="events">Events:</label>
-            <input type="number" name="events" required>
+            <label for="kendaraan">Kendaraan:</label>
+            <input type="number" name="kendaraan" required>
 
             <input type="submit" value="Classify">
         </form>
